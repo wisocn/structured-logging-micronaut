@@ -12,6 +12,7 @@
     in pkgs.mkShell {
         buildInputs = with pkgs; [
           jdk
+          just
           # customise gradle
           (callPackage gradle-packages.gradle_8 {
             java = jdk;
