@@ -1,4 +1,4 @@
 
 
-rootProject.name="logging"
+rootProject.name="structured-logging-micronaut"
 

@@ -24,7 +24,7 @@ dependencies {
 
 
 application {
-    mainClass.set("com.paymentology.structured.structured.Application")
+    mainClass.set("com.example.Application")
 }
 java {
     sourceCompatibility = JavaVersion.toVersion("21")

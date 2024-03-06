@@ -12,5 +12,5 @@ build:
 	gradle clean build -xtest
 
 run: build
-	docker-compose up -d 
+	gradle run	
 

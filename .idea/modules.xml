@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/logging.main.iml" filepath="$PROJECT_DIR$/.idea/modules/logging.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/structured-logging-micronaut.main.iml" filepath="$PROJECT_DIR$/.idea/modules/structured-logging-micronaut.main.iml" />
     </modules>
   </component>
 </project>
