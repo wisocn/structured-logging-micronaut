@@ -1,0 +1,6 @@
+applicationType: default
+defaultPackage: com.paymentology.structured.structured
+testFramework: spock
+sourceLanguage: java
+buildTool: gradle_kotlin
+features: [app-name, gradle, http-client-test, java, java-application, jul-to-slf4j, logback, micronaut-aot, micronaut-build, micronaut-http-validation, netty-server, properties, readme, serialization-jackson, shade, spock, static-resources]
