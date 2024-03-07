@@ -13,13 +13,17 @@ repositories {
 }
 
 dependencies {
-    annotationProcessor("io.micronaut:micronaut-http-validation")
+    // serialization
     annotationProcessor("io.micronaut.serde:micronaut-serde-processor")
     implementation("io.micronaut.serde:micronaut-serde-jackson")
-    compileOnly("io.micronaut:micronaut-http-client")
-    runtimeOnly("ch.qos.logback:logback-classic")
-    runtimeOnly("org.slf4j:jul-to-slf4j:2.0.12")
-    testImplementation("io.micronaut:micronaut-http-client")
+
+    // logging facade slf4j
+    implementation("org.slf4j:slf4j-api:2.0.12")
+
+    // logging logback with encoder
+    implementation("ch.qos.logback:logback-classic:1.5.3")
+    implementation("ch.qos.logback:logback-core:1.5.3")
+    implementation("net.logstash.logback:logstash-logback-encoder:7.4")
 }
 
 
