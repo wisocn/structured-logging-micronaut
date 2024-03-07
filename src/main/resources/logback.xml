@@ -1,14 +1,16 @@
 <configuration>
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-        <!-- encoders are assigned the type
-             ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
-        <encoder>
-            <pattern>%cyan(%d{HH:mm:ss.SSS}) %gray([%thread]) %highlight(%-5level) %magenta(%logger{36}) - %msg%n</pattern>
-        </encoder>
+        <encoder class="ch.qos.logback.classic.encoder.JsonEncoder" />
+    </appender>
+
+    <!-- Define an asynchronous appender wrapping the console appender -->
+    <appender name="ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+        <!-- Reference to the appender it wraps -->
+        <appender-ref ref="STDOUT"/>
     </appender>
 
     <root level="info">
-        <appender-ref ref="STDOUT" />
+        <appender-ref ref="ASYNC"/>
     </root>
 </configuration>

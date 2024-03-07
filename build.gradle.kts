@@ -1,12 +1,14 @@
+version = "0.1"
+group = "com.structured.logging"
+var entrypoint = "com.logging.Application"
+var basePackage = "com.logging.*"
+
 plugins {
-    id("groovy") 
+    id("groovy")
     id("com.github.johnrengelman.shadow") version "8.1.1"
     id("io.micronaut.application") version "4.3.3"
     id("io.micronaut.aot") version "4.3.3"
 }
-
-version = "0.1"
-group = "com.structured.logging"
 
 repositories {
     mavenCentral()
@@ -26,43 +28,23 @@ dependencies {
     implementation("net.logstash.logback:logstash-logback-encoder:7.4")
 }
 
-
 application {
-    mainClass.set("com.example.Application")
+    mainClass.set(entrypoint)
 }
+
 java {
     sourceCompatibility = JavaVersion.toVersion("21")
     targetCompatibility = JavaVersion.toVersion("21")
 }
 
-
-graalvmNative.toolchainDetection.set(false)
 micronaut {
     runtime("netty")
     testRuntime("spock2")
     processing {
         incremental(true)
-        annotations("com.paymentology.structured.structured.*")
-    }
-    aot {
-    // Please review carefully the optimizations enabled below
-    // Check https://micronaut-projects.github.io/micronaut-aot/latest/guide/ for more details
-        optimizeServiceLoading.set(false)
-        convertYamlToJava.set(false)
-        precomputeOperations.set(true)
-        cacheEnvironment.set(true)
-        optimizeClassLoading.set(true)
-        deduceEnvironment.set(true)
-        optimizeNetty.set(true)
+        annotations(basePackage)
     }
 }
 
-tasks.named<io.micronaut.gradle.docker.MicronautDockerfile>("dockerfile") {
-    baseImage("eclipse-temurin:21-jre-jammy")
-}
-
-tasks.named<io.micronaut.gradle.docker.NativeImageDockerfile>("dockerfileNative") {
-    jdkVersion.set("21")
-}
 
 

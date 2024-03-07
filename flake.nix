@@ -13,6 +13,7 @@
         buildInputs = with pkgs; [
           jdk
           just
+          curl
           # customise gradle
           (callPackage gradle-packages.gradle_8 {
             java = jdk;
