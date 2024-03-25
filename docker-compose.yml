@@ -1,0 +1,24 @@
+version: "3"
+
+networks:
+  observability:
+
+services:
+  grafana:
+    build:
+      context: ./grafana
+    container_name: grafana
+    ports:
+      - 9000:3000
+    networks:
+      - observability
+
+  loki:
+    build:
+      context: ./loki
+    container_name: loki
+    ports:
+      - 9100:3100
+    networks:
+      - observability
+
