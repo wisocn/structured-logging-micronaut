@@ -1,4 +1,4 @@
-version = "0.1"
+version = "0.4"
 group = "com.structured.logging"
 var entrypoint = "com.logging.Application"
 var basePackage = "com.logging.*"
@@ -22,10 +22,16 @@ dependencies {
     // logging facade slf4j
     implementation("org.slf4j:slf4j-api:2.0.12")
 
+    implementation("io.micronaut.micrometer:micronaut-micrometer-core")
+    implementation("io.micronaut.micrometer:micronaut-micrometer-registry-prometheus")
+    implementation("io.micronaut:micronaut-management")
+
     // logging logback with encoder
     implementation("ch.qos.logback:logback-classic:1.5.3")
     implementation("ch.qos.logback:logback-core:1.5.3")
     implementation("net.logstash.logback:logstash-logback-encoder:7.4")
+
+    runtimeOnly("org.yaml:snakeyaml")
 }
 
 application {

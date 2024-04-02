@@ -12,7 +12,11 @@ load-test:
     ab -n 10000 -c 100 http://localhost:8080/log/test12351/
 
 build:
-	gradle clean build -xtest
+	./gradlew clean build -xtest
 
 run: build
-	gradle run
+   ./gradlew run
+
+package: build
+	docker-compose build --no-cache
+
