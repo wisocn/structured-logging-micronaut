@@ -9,7 +9,7 @@ scrape_configs:
   - job_name: "prometheus"
 
     metrics_path: '/prometheus'
-    scrape_interval: 2s
+    scrape_interval: 500ms
 
     static_configs:
       - targets: ["micronaut-app:8080"]
