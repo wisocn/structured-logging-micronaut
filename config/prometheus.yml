@@ -5,11 +5,23 @@ global:
 # A scrape configuration containing exactly one endpoint to scrape:
 # Here it's Prometheus itself.
 scrape_configs:
-  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
+  # scrape micronaut prometheus
   - job_name: "prometheus"
-
     metrics_path: '/prometheus'
     scrape_interval: 500ms
-
     static_configs:
       - targets: ["micronaut-app:8080"]
+
+  # scrape loki prometheus
+  - job_name: "loki"
+    metrics_path: '/metrics'
+    scrape_interval: 500ms
+    static_configs:
+      - targets: ["loki:3100"]
+
+  # scrape promtail prometheus
+  - job_name: "promtail"
+    metrics_path: '/metrics'
+    scrape_interval: 500ms
+    static_configs:
+      - targets: [ "promtail:9080" ]

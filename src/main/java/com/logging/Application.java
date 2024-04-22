@@ -8,9 +8,5 @@ public class Application {
 
     public static void main(String[] args) {
         Micronaut.run(Application.class, args);
-
-
-       var x = new ConcurrentHashMap<String, String>();
-       x.put("", "");
     }
 }

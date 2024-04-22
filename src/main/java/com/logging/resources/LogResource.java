@@ -19,5 +19,17 @@ public class LogResource {
         return ok(sent);
     }
 
+    @Get("/mask/{sent}")
+    public HttpResponse<?> sentLogMaskExample(String sent) {
+        log.info("John's credit card number is {}", "1234-5678-9101-1121");
+        return ok(sent);
+    }
+
+    @Get("/mdc/{sent}")
+    public HttpResponse<?> sentMDCLogExample(String sent) {
+        log.info("This is a log from controller {}", sent);
+        return ok(sent);
+    }
+
 
 }

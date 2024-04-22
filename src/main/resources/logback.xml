@@ -1,7 +1,20 @@
 <configuration>
+    <property resource="application.yml" />
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder class="ch.qos.logback.classic.encoder.JsonEncoder" />
+        <charset>UTF-8</charset>
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <timestampPattern>[ISO_OFFSET_DATE_TIME]</timestampPattern>
+            <customFields>
+                {
+                    "service": "paypower",
+                    "environment": "dev",
+                    "client": ["mox", "gothyme"],
+                    "sha": "f040b3428e02f702cc186bb556d1b564ab8e27bf",
+                    "version": "1.1.6"
+                }
+            </customFields>
+        </encoder>
     </appender>
 
     <!-- Define an asynchronous appender wrapping the console appender -->
@@ -10,13 +23,7 @@
         <appender-ref ref="STDOUT"/>
     </appender>
 
-    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder>
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
-        </encoder>
-    </appender>
-
     <root level="info">
-        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="ASYNC"/>
     </root>
 </configuration>

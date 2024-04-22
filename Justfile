@@ -17,6 +17,8 @@ build:
 run: build
    ./gradlew run
 
+
+
 package: build
 	docker-compose build --no-cache
 

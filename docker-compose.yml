@@ -55,6 +55,12 @@ services:
   micronaut-app:
     image: micronaut/loki-logging:1.0.0
     container_name: micronaut
+    environment:
+      - SERVICE=micronaut-app
+      - VERSION=1.1.6
+      - CLIENTS=mox,gothyme
+      - SHA=f040b3428e02f702cc186bb556d1b564ab8e27bf
+      - ENVIRONMENT=dev
     build:
       context: .
     labels:
@@ -67,6 +73,8 @@ services:
   loki:
     image: grafana/loki:2.9.2
     container_name: loki
+    volumes:
+      - ./config/loki.yml:/etc/loki/local-config.yaml
     ports:
       - 3100:3100
     command: -config.file=/etc/loki/local-config.yaml
