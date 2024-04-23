@@ -10,14 +10,14 @@
             <timestampPattern>[ISO_OFFSET_DATE_TIME]</timestampPattern>
             <customFields>
                 {
-                    "service": "paypower",
-                    "environment": "dev",
-                    "client": ["mox", "gothyme"],
-                    "sha": "f040b3428e02f702cc186bb556d1b564ab8e27bf",
-                    "version": "1.1.6",
-                    "cluster": "arn:aws:eks:us-west-2:123456789012:cluster/my-cluster",
-                    "zone": "us-east-1a",
-                    "region": "us-east-1"
+                    "service": "${SERVICE:-SERVICE_NOT_SET}",
+                    "environment": "${ENVIRONMENT:-ENVIRONMENT_NOT_SET}",
+                    "client": "${CLIENT:-CLIENT_NOT_SET}",
+                    "sha": "${SHA:-SHA_NOT_SET}",
+                    "version": "{VERSION:-VERSION_NOT_SET}",
+                    "cluster": "${CLUSTER:-CLUSTER_NOT_SET}",
+                    "zone": "${ZONE:-ZONE_NOT_SET}",
+                    "region": "${REGION:-REGION_NOT_SET}"
                 }
             </customFields>
         </encoder>

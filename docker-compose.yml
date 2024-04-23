@@ -61,6 +61,9 @@ services:
       - CLIENTS=mox,gothyme
       - SHA=f040b3428e02f702cc186bb556d1b564ab8e27bf
       - ENVIRONMENT=dev
+      - REGION=us-east-1
+      - ZONE=us-east-1az
+      - CLUSTER=arn:aws:eks:us-west-2:123456789012:cluster/my-cluster
     build:
       context: .
     labels:
