@@ -8,32 +8,59 @@ positions:
   filename: /tmp/positions.yaml
 
 clients:
+
+    # self-explanatory
   - url: http://loki:3100/loki/api/v1/push
+
+    # Maximum time to wait for a server to respond to a request
+    timeout: 10s
+
+    # Default backoff schedule:
+    # 0.5s, 1s, 2s, 4s, 8s, 16s, 32s, 64s, 128s, 256s(4.267m)
+    # For a total time of 511.5s(8.5m) before logs are lost
+    backoff_config:
+
+      # Maximum backoff time between retries
+      max_period: 10m
+
+      # Maximum number of retries to do
+      max_retries: 10
+
+      # Initial backoff time between retries
+      min_period: 1s
+
+    # Maximum batch size (in bytes) of logs to accumulate before sending
+    # the batch to Loki.
+    batchsize: 134217728
+
+    # Maximum amount of time to wait before sending a batch, even if that
+    # batch isn't full.
+    batchwait: 1s
+
 scrape_configs:
   - job_name: flog_scrape
-
     docker_sd_configs:
       - host: unix:///var/run/docker.sock
         refresh_interval: 1s
         filters:
           - name: label
             values: ["logging=promtail"]
-    relabel_configs:
-      - source_labels: ['__meta_docker_container_name']
-        regex: '/(.*)'
-        target_label: 'container'
-      - source_labels: ['__meta_docker_container_log_stream']
-        target_label: 'logstream'
-      - source_labels: ['__meta_docker_container_label_logging_jobname']
-        target_label: 'job'
     pipeline_stages:
-      - cri: {}
       - multiline:
           firstline: ^\d{4}-\d{2}-\d{2} \d{1,2}:\d{2}:\d{2},\d{3}
           max_wait_time: 3s
-      # https://grafana.com/docs/loki/latest/clients/promtail/stages/json/
       - json:
           expressions:
-            #message: message
             level: level
-            #output: 'message'
+            env: environment
+            service: service
+            cluster: cluster
+            zone: zone
+            region: region
+      - labels:
+          env:
+          level:
+          service:
+          cluster:
+          zone:
+          region:

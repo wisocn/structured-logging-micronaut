@@ -4,6 +4,9 @@
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <charset>UTF-8</charset>
         <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <jsonGeneratorDecorator class="net.logstash.logback.mask.MaskingJsonGeneratorDecorator">
+                <valueMasker class="com.logging.masking.SensitiveInformationValueMasker"/>
+            </jsonGeneratorDecorator>
             <timestampPattern>[ISO_OFFSET_DATE_TIME]</timestampPattern>
             <customFields>
                 {
@@ -11,7 +14,10 @@
                     "environment": "dev",
                     "client": ["mox", "gothyme"],
                     "sha": "f040b3428e02f702cc186bb556d1b564ab8e27bf",
-                    "version": "1.1.6"
+                    "version": "1.1.6",
+                    "cluster": "arn:aws:eks:us-west-2:123456789012:cluster/my-cluster",
+                    "zone": "us-east-1a",
+                    "region": "us-east-1"
                 }
             </customFields>
         </encoder>
