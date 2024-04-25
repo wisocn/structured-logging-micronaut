@@ -17,7 +17,13 @@ build:
 run: build
    ./gradlew run
 
+teardown:
+	docker-compose down
 
+restart: teardown package start
+
+start:
+	docker-compose up -d
 
 package: build
 	docker-compose build --no-cache

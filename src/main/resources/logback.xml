@@ -14,7 +14,7 @@
                     "environment": "${ENVIRONMENT:-ENVIRONMENT_NOT_SET}",
                     "client": "${CLIENT:-CLIENT_NOT_SET}",
                     "sha": "${SHA:-SHA_NOT_SET}",
-                    "version": "{VERSION:-VERSION_NOT_SET}",
+                    "version": "${VERSION:-VERSION_NOT_SET}",
                     "cluster": "${CLUSTER:-CLUSTER_NOT_SET}",
                     "zone": "${ZONE:-ZONE_NOT_SET}",
                     "region": "${REGION:-REGION_NOT_SET}"

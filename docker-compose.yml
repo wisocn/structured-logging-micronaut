@@ -44,6 +44,8 @@ services:
       - ./config/grafana-datasources.yml:/etc/grafana/provisioning/datasources/datasources.yaml
       - ./config/grafana-dashboard.yml:/etc/grafana/provisioning/dashboards/main.yaml
       - ./config/grafana-jvm-dashboard.json:/var/lib/grafana/dashboards/jvm-dashboard.json
+      - ./config/grafana-loki-dashboard.json:/var/lib/grafana/dashboards/loki-dashboard.json
+      - ./config/grafana-promtail-dashboard.json:/var/lib/grafana/dashboards/promtail-dashboard.json
     environment:
       - GF_AUTH_ANONYMOUS_ENABLED=true
       - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
@@ -58,7 +60,7 @@ services:
     environment:
       - SERVICE=micronaut-app
       - VERSION=1.1.6
-      - CLIENTS=mox,gothyme
+      - CLIENT=mox,gothyme
       - SHA=f040b3428e02f702cc186bb556d1b564ab8e27bf
       - ENVIRONMENT=dev
       - REGION=us-east-1
@@ -93,6 +95,8 @@ services:
       - /var/lib/docker/containers:/var/lib/docker/containers:ro
       - /var/run/docker.sock:/var/run/docker.sock
     command: -config.file=/etc/promtail/docker-config.yaml
+    ports:
+      - 9080:9080
     depends_on:
       - loki
     networks:

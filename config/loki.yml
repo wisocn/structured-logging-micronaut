@@ -2,6 +2,10 @@ auth_enabled: false
 
 server:
   http_listen_port: 3100
+  # Read timeout for HTTP server
+  http_server_read_timeout: 3m
+  # Write timeout for HTTP server
+  http_server_write_timeout: 3m
 
 common:
   path_prefix: /loki
@@ -27,6 +31,17 @@ schema_config:
 storage_config:
   filesystem:
     directory: /tmp/loki/chunks
+
+query_range:
+  split_queries_by_interval: 0
+  parallelise_shardable_queries: false
+
+querier:
+  max_concurrent: 2048
+
+frontend:
+  max_outstanding_per_tenant: 4096
+  compress_responses: true
 
 analytics:
   reporting_enabled: false

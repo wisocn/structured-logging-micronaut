@@ -13,14 +13,14 @@ scrape_configs:
       - targets: ["micronaut-app:8080"]
 
   # scrape loki prometheus
-  - job_name: "loki"
+  - job_name: "loki metrics"
     metrics_path: '/metrics'
     scrape_interval: 500ms
     static_configs:
       - targets: ["loki:3100"]
 
   # scrape promtail prometheus
-  - job_name: "promtail"
+  - job_name: "promtail metrics"
     metrics_path: '/metrics'
     scrape_interval: 500ms
     static_configs:
