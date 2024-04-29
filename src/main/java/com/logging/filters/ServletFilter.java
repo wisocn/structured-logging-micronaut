@@ -13,7 +13,6 @@ public class ServletFilter {
 
     private static final Logger log = LoggerFactory.getLogger(ServletFilter.class);
 
-
     @RequestFilter
     public void filterRequest(HttpRequest<?> request) {
         log.info("Incoming request {}", request.toString());

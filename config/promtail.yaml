@@ -52,13 +52,13 @@ scrape_configs:
       - json:
           expressions:
             level: level
-            env: environment
+            environment: environment
             service: service
             cluster: cluster
             zone: zone
             region: region
       - labels:
-          env:
+          environment:
           level:
           service:
           cluster:
