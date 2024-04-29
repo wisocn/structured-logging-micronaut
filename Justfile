@@ -6,16 +6,16 @@ export GIT_SHA := `git rev-parse --short HEAD`
 
 [private]
 default:
-	@ just --list --unsorted
+	@just --list --unsorted
 
 load-test:
-    ab -n 10000 -c 100 http://localhost:8080/log/test12351/
+   ab -n 10000 -c 100 http://localhost:8080/log/test12351/
 
 build:
 	./gradlew clean build -xtest
 
 run: build
-   ./gradlew run
+  ./gradlew run
 
 teardown:
 	docker-compose down
