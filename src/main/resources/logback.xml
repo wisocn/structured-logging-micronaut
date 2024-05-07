@@ -17,7 +17,8 @@
                     "version": "${VERSION:-VERSION_NOT_SET}",
                     "cluster": "${CLUSTER:-CLUSTER_NOT_SET}",
                     "zone": "${ZONE:-ZONE_NOT_SET}",
-                    "region": "${REGION:-REGION_NOT_SET}"
+                    "region": "${REGION:-REGION_NOT_SET}",
+                    "test": "test1"
                 }
             </customFields>
         </encoder>
