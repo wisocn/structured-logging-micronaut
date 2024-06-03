@@ -1,0 +1,11 @@
+--2024-06-03 13:32:58--  http://loki-logs.s3.localhost.localstack.cloud:4566/?delimiter=/
+Resolving loki-logs.s3.localhost.localstack.cloud (loki-logs.s3.localhost.localstack.cloud)... 127.0.0.1
+Connecting to loki-logs.s3.localhost.localstack.cloud (loki-logs.s3.localhost.localstack.cloud)|127.0.0.1|:4566... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 1513 (1,5K) [application/xml]
+Saving to: ‘index.html?delimiter=%2F’
+
+index.html?delimiter=%2F                                      0%[                                                                                                                                          ]       0  --.-KB/s               index.html?delimiter=%2F                                    100%[=========================================================================================================================================>]   1,48K  --.-KB/s    in 0s      
+
+2024-06-03 13:32:59 (111 MB/s) - ‘index.html?delimiter=%2F’ saved [1513/1513]
+
