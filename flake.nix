@@ -8,7 +8,7 @@
     devShell.aarch64-darwin = let
         pkgs = import nixpkgs { system = "aarch64-darwin"; };
         # choose our preferred jdk package
-        jdk = pkgs.jdk17;
+        jdk = pkgs.jdk21;
     in pkgs.mkShell {
         buildInputs = with pkgs; [
           jdk

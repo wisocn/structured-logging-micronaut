@@ -3,25 +3,6 @@
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <charset>UTF-8</charset>
-        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
-            <jsonGeneratorDecorator class="net.logstash.logback.mask.MaskingJsonGeneratorDecorator">
-                <valueMasker class="com.logging.masking.SensitiveInformationValueMasker"/>
-            </jsonGeneratorDecorator>
-            <timestampPattern>[ISO_OFFSET_DATE_TIME]</timestampPattern>
-            <customFields>
-                {
-                    "service": "${SERVICE:-SERVICE_NOT_SET}",
-                    "environment": "${ENVIRONMENT:-ENVIRONMENT_NOT_SET}",
-                    "client": "${CLIENT:-CLIENT_NOT_SET}",
-                    "sha": "${SHA:-SHA_NOT_SET}",
-                    "version": "${VERSION:-VERSION_NOT_SET}",
-                    "cluster": "${CLUSTER:-CLUSTER_NOT_SET}",
-                    "zone": "${ZONE:-ZONE_NOT_SET}",
-                    "region": "${REGION:-REGION_NOT_SET}",
-                    "test": "test1"
-                }
-            </customFields>
-        </encoder>
     </appender>
 
     <!-- Define an asynchronous appender wrapping the console appender -->
