@@ -1,4 +1,4 @@
 
 
-rootProject.name="structured-logging-micronaut"
+rootProject.name="pidlimts-test"
 
